@@ -79,7 +79,7 @@ class Favourites extends Component {
                         onClick={() =>
                           this.props.setPlaylist(
                             track,
-                            this.state.tracks,
+                            this.props.favourites.songs,
                             this.state.album.cover
                           )
                         }
