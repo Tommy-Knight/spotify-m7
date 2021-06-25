@@ -1,0 +1,366 @@
+/* The sidebar menu */
+@font-face {
+	font-family: "spotifyfont";
+	src: url("spotifyfont-webfont.woff2") format("woff2"),
+		url("spotifyfont-webfont.woff") format("woff");
+}
+body {
+	margin-left: 250px;
+	font-family: "spotifyfont";
+	background-color: black;
+	color: white;
+}
+.sidenav {
+	height: 100%;
+	width: 250px;
+	position: fixed;
+	z-index: 1;
+	top: 0;
+	left: 0;
+	background-color: #111;
+	overflow-x: hidden;
+	padding-top: 20px;
+	font-family: spotifyfont;
+}
+.smallnav {
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+	display: none;
+	text-align: center;
+	margin: 5px;
+}
+.smallnav a {
+	text-decoration: none;
+	color: white;
+}
+.smallnavicon {
+	display: inline;
+	color: grey;
+	margin: 5px;
+}
+.smallnavicon:hover {
+	color: #f1f1f1 !important;
+	text-decoration: none;
+}
+
+.sidenav a {
+	padding: 6px 25px 6px 25px;
+	text-decoration: none;
+	font-size: 22px;
+	color: #818181;
+	display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+	color: #f1f1f1;
+}
+.greenborder:hover {
+	border-left: 5px solid #1db954;
+}
+
+.sidebar-logo {
+	width: 100%;
+	padding-bottom: 15px;
+}
+
+.sidebarIcon {
+	width: 30px;
+	height: 30px;
+	margin-bottom: 10px;
+}
+.navFoot {
+	position: absolute;
+	bottom: 105px;
+}
+.loginBtn {
+	width: 200px;
+	border: 3px solid rgb(201, 201, 201);
+	border-radius: 30px;
+	margin-left: 25px;
+	margin-bottom: 10px;
+	font-size: 16px !important;
+}
+.cookies {
+	color: grey !important;
+	display: flex !important;
+	justify-content: center;
+	font-size: 12px !important;
+	margin-left: 25px;
+	cursor: pointer;
+}
+.cookies:hover {
+	color: white !important;
+}
+.footer {
+	height: 100px;
+	background-color: #212121;
+	color: rgb(221, 221, 221);
+	padding: 10px 10px 0px 10px;
+	line-height: 0;
+	font-size: 10px;
+	font-family: spotifyfont;
+}
+.currentalbumart {
+	height: 75px;
+	width: 75px;
+}
+.playbutton {
+	color: white !important;
+	font-size: 25px;
+	margin-top: 7px;
+}
+.playbutton:hover {
+	font-size: 27px;
+}
+.shuffleicon {
+	padding-top: 4px;
+}
+.bottomIcon {
+	width: 20px;
+	height: 20px;
+	margin: 10px;
+	font-size: 14px;
+	line-height: 1.5;
+}
+
+.bottomLeft {
+	display: flex;
+	align-items: center;
+}
+
+.bottomMiddle {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 15px;
+}
+
+.bottomRight {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+}
+.songartist {
+	margin-left: 1px;
+	margin-bottom: 15px;
+	color: rgb(173, 173, 173);
+}
+
+@media only screen and (max-width: 768px) {
+	.sidenav {
+		display: none;
+	}
+	.smallnav {
+		display: block;
+	}
+	.footer {
+		height: 150px;
+	}
+	input[type="range"] {
+		position: fixed !important;
+		right: -5px;
+		width: 69px !important;
+		transform: rotate(270deg);
+	}
+	input[type="range"] {
+		overflow: hidden;
+		-webkit-appearance: none;
+		background-color: #434343 !important;
+	}
+
+	input[type="range"]::-webkit-slider-thumb {
+		width: 11px;
+		-webkit-appearance: none;
+		height: 11px;
+		cursor: n-resize !important;
+		background: #1db954 !important;
+		box-shadow: -80px 0 0 80px #434343 !important;
+	}
+	.songtime {
+		color: grey;
+		font-size: 8px !important;
+	}
+}
+
+input[type="range"] {
+	width: 80px;
+	-webkit-appearance: none;
+	background-color: #434343;
+}
+input[type="range"]::-webkit-slider-thumb {
+	width: 10px;
+	-webkit-appearance: none;
+	height: 11px;
+	cursor: ew-resize;
+	background: #1db954;
+}
+
+.iconHover {
+	position: relative;
+	transition: all 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+	z-index: 1;
+}
+
+.iconHover:hover {
+	transform: scale(1.1);
+	z-index: 5;
+}
+@media only screen and (max-width: 768px) {
+	body {
+		margin-left: 0;
+	}
+}
+@media only screen and (max-width: 768px) {
+	.tile-card:hover {
+		transform: scale(1.05) !important;
+		z-index: 1;
+	}
+}
+
+.jumbotron {
+	height: 200px;
+	background-image: linear-gradient(
+			to bottom,
+			rgba(255, 255, 255, 0),
+			rgb(0, 0, 0)
+		),
+		url("./abbey.jpg");
+	background-size: 100%;
+	background-repeat: no-repeat;
+	background-position: bottom;
+	color: white;
+	text-align: center;
+	letter-spacing: 2px;
+}
+.monthlyListen {
+	color: rgb(184, 184, 184);
+	text-shadow: 0px 0px 8px rgb(0, 0, 0);
+	font-size: 12px;
+	letter-spacing: 2px;
+}
+.playBtn {
+	width: 150px;
+	border-radius: 25px;
+}
+.followBtn {
+	width: 150px;
+	margin-right: 15px;
+	margin-left: 8px;
+	border-radius: 25px;
+	border: 2px solid white;
+	color: white;
+	background-color: rgba(90, 90, 90, 0.445);
+}
+.activateButton {
+	color: white;
+}
+.activateButton:hover {
+	color: grey;
+}
+button.home-nav-btns::after {
+	content: "";
+	position: absolute;
+	width: 50%;
+	height: 3px;
+	bottom: -3.5px;
+	left: 26%;
+	background-color: #349e5e;
+	visibility: hidden;
+	transform: scaleX(0);
+	transition: all 0.3s ease-in-out;
+}
+
+button.animatelinks::before {
+	content: "";
+	position: absolute;
+	width: 50%;
+	height: 3px;
+	bottom: -3.5px;
+	left: 20%;
+	background-color: #e6ac00;
+	visibility: visible;
+}
+
+button.home-nav-btns:hover:after {
+	visibility: visible;
+	transform: scaleX(1);
+}
+.mininav:hover {
+	color: grey;
+}
+
+.tile-card {
+	position: relative;
+	transition: all 1s cubic-bezier(0.25, 0.1, 0.25, 1);
+	z-index: 1;
+}
+.tile-card:hover {
+	transform: scale(1.1);
+	z-index: 5;
+}
+.tile-title {
+	font-size: 12px;
+	text-align: center;
+	margin: 1.5em;
+	font-weight: 800;
+	position: relative;
+	letter-spacing: 1px;
+}
+.tile-logo {
+	position: absolute;
+	top: 5px;
+	left: 5px;
+}
+.tile-logo img {
+	height: 20px;
+}
+/* width */
+::-webkit-scrollbar {
+	width: 8px;
+	color: black;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 5px #1e212a;
+	border-radius: 5px;
+	background: #212121;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #363636;
+	border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #1e212a;
+}
+.row {
+	display: flex;
+	flex-wrap: nowrap;
+	overflow-x: auto;
+}
+.albumSearch {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+input[type="text"]{
+	color: white;
+	background: black;
+	margin: auto;
+	border: 1px solid black!important;
+	width: 90%;
+	margin: auto;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+	box-shadow: 0 0 5px rgb(252, 252, 252);
+	border: 1px solid rgb(255, 255, 255);
+		color: white;
+	background: black;
+}
