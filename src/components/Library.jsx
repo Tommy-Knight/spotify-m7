@@ -1,4 +1,6 @@
 import React, { Component } from "react"
+import { Link } from "react-router-dom"
+
 
 export default class Library extends Component {
 	state = { 
@@ -42,7 +44,7 @@ export default class Library extends Component {
 									alt=""
 								/>
 								<h4>{this.state.album.title}</h4>
-								<p>{this.state.artist.name}</p>
+								<Link to={`/artist/${this.state.artist.id}`}><p>{this.state.artist.name}</p></Link>
 								<button className="btn btn-success btn-n">PLAY</button>
 								<p>{this.state.album.fans} Fans • {this.state.album.nb_tracks} SONGS</p>
 								<div>
