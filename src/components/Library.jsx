@@ -88,6 +88,7 @@ class Library extends Component {
                   {this.state.tracks.map((track) => {
                     return (
                       <p
+                        className="pointer"
                         onClick={() =>
                           this.props.setPlaylist(
                             track,
@@ -108,7 +109,7 @@ class Library extends Component {
                               .map((s) => s.id)
                               .some((id) => id === track.id) && (
                               <HeartFill
-                                className="iconHover ml-1"
+                                className="iconHover ml-1 pointer"
                                 size={16}
                                 onClick={() =>
                                   this.props.removeFromFavourites(track)
@@ -119,7 +120,7 @@ class Library extends Component {
                               .map((s) => s.id)
                               .some((id) => id === track.id) && (
                               <Heart
-                                className="iconHover ml-1"
+                                className="iconHover ml-1 pointer"
                                 size={16}
                                 onClick={() =>
                                   this.props.addToFavourites(track)

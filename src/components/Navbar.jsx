@@ -206,7 +206,10 @@ class Navbar extends Component {
                   onmouseover="rick.play()"
                   className="playbutton iconHover text-white"
                 >
-                  <div onClick={() => this.props.prevSong()}>
+                  <div
+                    className="pointer"
+                    onClick={() => this.props.prevSong()}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -248,7 +251,10 @@ class Navbar extends Component {
                   onmouseover="rick.play()"
                   className="playbutton iconHover text-white"
                 >
-                  <div onClick={() => this.props.nextSong()}>
+                  <div
+                    className="pointer"
+                    onClick={() => this.props.nextSong()}
+                  >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
