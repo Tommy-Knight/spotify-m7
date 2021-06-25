@@ -31,7 +31,7 @@ function App() {
 							render={(routerProps) => (
 								<Library {...routerProps} title="" />
 							)}
-							path="/library"
+							path="/album/:id"
 							
 						/>
 
