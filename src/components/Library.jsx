@@ -19,8 +19,8 @@ const mapDispatchToProps = (dispatch) => ({
   removeFromFavourites: (song) => {
     dispatch(removeSongFromFavourites(song))
   },
-  setPlaylist: (song, album) => {
-    dispatch(getPlaylistAction(song, album))
+  setPlaylist: (song, album, cover) => {
+    dispatch(getPlaylistAction(song, album, cover))
   },
 })
 
@@ -87,7 +87,15 @@ class Library extends Component {
                 <ul className="">
                   {this.state.tracks.map((track) => {
                     return (
-                      <p>
+                      <p
+                        onClick={() =>
+                          this.props.setPlaylist(
+                            track,
+                            this.state.tracks,
+                            this.state.album.cover
+                          )
+                        }
+                      >
                         <span className="tracklist">
                           <b>
                             <PlayCircle className="iconHover mr-2" size={16} />
@@ -96,8 +104,28 @@ class Library extends Component {
                           <p style={{ color: "grey", fontSize: "12px" }}>
                             {Math.floor(track.duration / 60)}m
                             {track.duration % 60}s{" "}
-                            <Heart className="iconHover ml-1" size={16} />
-                            {/* <HeartFill className="iconHover ml-1" size={16} /> */}
+                            {this.props.favourites.songs
+                              .map((s) => s.id)
+                              .some((id) => id === track.id) && (
+                              <HeartFill
+                                className="iconHover ml-1"
+                                size={16}
+                                onClick={() =>
+                                  this.props.removeFromFavourites(track)
+                                }
+                              />
+                            )}
+                            {!this.props.favourites.songs
+                              .map((s) => s.id)
+                              .some((id) => id === track.id) && (
+                              <Heart
+                                className="iconHover ml-1"
+                                size={16}
+                                onClick={() =>
+                                  this.props.addToFavourites(track)
+                                }
+                              />
+                            )}
                           </p>
                         </span>
                       </p>
