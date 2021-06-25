@@ -10,6 +10,7 @@ const playlistReducer = (state = initialState.currentPlaylist, action) => {
         ...state,
         currentSong: action.payload.currentSong,
         songs: action.payload.songs,
+        cover: action.payload.cover,
       }
 
     case "NEXT_SONG":

@@ -172,15 +172,17 @@ class Navbar extends Component {
             <div className="col-2 col-md-2 bottomLeft">
               <a href="albumpage.html">
                 <img
-                  src={nowPlaying}
+                  src={this.props.currentPlaylist.cover}
                   className="currentalbumart"
                   alt="Album"
                   style={{ marginRight: 5 }}
                 />
               </a>
               <div className="d-inline p-1 songartist">
-                <h6 className="text-white">Help!</h6>
-                Beatles
+                <h6 className="text-white">
+                  {this.props.currentPlaylist.currentSong.title}
+                </h6>
+                {this.props.currentPlaylist.currentSong.artist.name}
               </div>
               <svg
                 className=" ml-3 iconHover"

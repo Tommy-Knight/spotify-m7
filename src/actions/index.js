@@ -8,11 +8,12 @@ export const removeSongFromFavourites = (song) => ({
   payload: song,
 })
 
-export const getPlaylistAction = (song, album) => ({
+export const getPlaylistAction = (song, album, cover) => ({
   type: "SET_PLAYLIST",
   payload: {
     currentSong: song,
     songs: album,
+    cover: cover,
   },
 })
 
