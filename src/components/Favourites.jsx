@@ -60,7 +60,7 @@ class Favourites extends Component {
 
 	render() {
 		return (<>
-			<h3 className="p-5 text-center"> Here's your Favourite Tracks! <br/> Oh my what excellent taste you have: {this.props.state}</h3>
+			<h3 className="p-5 text-center"> Here's your Favourite Tracks! <br/> Oh my, what excellent taste you have.. {this.props.state}</h3>
 		
         <div className="track-container">
                 <ul className="">

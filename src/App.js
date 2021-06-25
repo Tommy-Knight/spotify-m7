@@ -35,7 +35,7 @@ function App() {
 							path="/library"
 						/>
 						<Route path="/">
-							<h1>Welcome to Tommyify</h1>
+							<h1>Welcome to Tommy&Gregorify</h1>
 						</Route>
 					</Switch>
 				</>
