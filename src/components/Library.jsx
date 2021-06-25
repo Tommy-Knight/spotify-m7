@@ -87,19 +87,20 @@ class Library extends Component {
                 <ul className="">
                   {this.state.tracks.map((track) => {
                     return (
-                      <p
-                        className="pointer"
-                        onClick={() =>
-                          this.props.setPlaylist(
-                            track,
-                            this.state.tracks,
-                            this.state.album.cover
-                          )
-                        }
-                      >
+                      <p className="pointer">
                         <span className="tracklist">
                           <b>
-                            <PlayCircle className="iconHover mr-2" size={16} />
+                            <PlayCircle
+                              onClick={() =>
+                                this.props.setPlaylist(
+                                  track,
+                                  this.state.tracks,
+                                  this.state.album.cover
+                                )
+                              }
+                              className="iconHover mr-2"
+                              size={16}
+                            />
                             {track.title_short}
                           </b>
                           <p style={{ color: "grey", fontSize: "12px" }}>
