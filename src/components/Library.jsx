@@ -6,6 +6,7 @@ import {
   removeSongFromFavourites,
   getPlaylistAction,
 } from "../actions"
+import { PlayCircle, Heart, HeartFill } from "react-bootstrap-icons"
 
 const mapStateToProps = (state) => ({
   ...state,
@@ -59,7 +60,7 @@ class Library extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{ marginBottom: "200px" }}>
         <div className="container-fluid m-0 p-0">
           <div className="row mt-5">
             <div className="col-lg-6 col-md-6 album-n">
@@ -71,36 +72,35 @@ class Library extends Component {
                 />
                 <h4>{this.state.album.title}</h4>
                 <Link to={`/artist/${this.state.artist.id}`}>
-                  <p>{this.state.artist.name}</p>
+                  <p className="fixLink">{this.state.artist.name}</p>
                 </Link>
                 <button className="btn btn-success btn-n">PLAY</button>
                 <p>
                   {this.state.album.fans} Fans • {this.state.album.nb_tracks}{" "}
                   SONGS
                 </p>
-                <div>
-                  <span className="fa-stack mb-2" id="toggle">
-                    <i className="far fa-heart fa-stack-1x" />
-                    <i className="fas fa-heart fa-stack-1x" />
-                  </span>
-                  <span>
-                    <i className="fa fa-ellipsis-h mb-2" />
-                  </span>
-                </div>
+                <div></div>
               </div>
             </div>
             <div className="col-lg-5 col-md-5 tracklist-n">
               <div className="track-container">
-                <ul className="fa-ul">
+                <ul className="">
                   {this.state.tracks.map((track) => {
                     return (
-                      <li
-                        onClick={() =>
-                          this.props.setPlaylist(track, this.state.tracks)
-                        }
-                      >
-                        {track.title}
-                      </li>
+                      <p>
+                        <span className="tracklist">
+                          <b>
+                            <PlayCircle className="iconHover mr-2" size={16} />
+                            {track.title_short}
+                          </b>
+                          <p style={{ color: "grey", fontSize: "12px" }}>
+                            {Math.floor(track.duration / 60)}m
+                            {track.duration % 60}s{" "}
+                            <Heart className="iconHover ml-1" size={16} />
+                            {/* <HeartFill className="iconHover ml-1" size={16} /> */}
+                          </p>
+                        </span>
+                      </p>
                     )
                   })}
                 </ul>
