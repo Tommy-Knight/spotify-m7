@@ -163,7 +163,7 @@ class Search extends Component {
               this.state.albums.map((album) => (
                 <div>
                   <Col key={album.id} xs={2} className="my-2">
-                    <Link to={`/artist/${album.id}`}>
+                    <Link to={`/album/${album.id}`}>
                       <img
                         style={{ marginTop: "20px" }}
                         className="iconHover"
