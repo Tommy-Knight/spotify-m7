@@ -56,36 +56,65 @@ class Favourites extends Component {
 	}
 	componentDidMount = () => {
 		this.fetchAll()
+		console.log(this.props)
 	}
 
 	render() {
-		return (<>
-			<h3 className="p-5 text-center"> Here's your Favourite Tracks! <br/> Oh my, what excellent taste you have.. {this.props.state}</h3>
-		
-        <div className="track-container">
-                <ul className="">
-                  {this.state.tracks.map((track) => {
-                    return (
-                      <p className="pr-5">
-                        <span className="tracklist">
-                          <b>
-                            <PlayCircle className="iconHover mr-2" size={16} />
-                            {track.title_short}
-                          </b>
-                          <p style={{ color: "grey", fontSize: "12px" }}>
-                            <Heart className="iconHover mr-2" size={16} />
-                            {Math.floor(track.duration / 60)}m
-                            {track.duration % 60}s{" "}
-                            {/* <HeartFill className="iconHover ml-1" size={16} /> */}
-                          </p>
-                        </span>
-                      </p>
-                    )
-                  })}
-                </ul>
-              </div>
-              </>
-            )
+		return (
+			<>
+				<h3 className="p-5 text-center">
+					{" "}
+					Here's your Favourite Tracks! <br /> Oh my, what excellent taste you
+					have.. {this.props.state}
+				</h3>
+
+				<div className="track-container">
+					<ul className="">
+						{this.props.favourites.songs.map((track) => {
+							return (
+								<p
+									onClick={() =>
+										this.props.setPlaylist(
+											track,
+											this.state.tracks,
+											this.state.album.cover
+										)
+									}
+								>
+									<span className="tracklist">
+										<b>
+											<PlayCircle className="iconHover mr-2" size={16} />
+											{track.title_short}
+										</b>
+										<p style={{ color: "grey", fontSize: "12px" }}>
+											{Math.floor(track.duration / 60)}m{track.duration % 60}s{" "}
+											{this.props.favourites.songs
+												.map((s) => s.id)
+												.some((id) => id === track.id) && (
+												<HeartFill
+													className="iconHover ml-1 mr-5"
+													size={16}
+													onClick={() => this.props.removeFromFavourites(track)}
+												/>
+											)}
+											{!this.props.favourites.songs
+												.map((s) => s.id)
+												.some((id) => id === track.id) && (
+												<Heart
+													className="iconHover ml-1 mr-5"
+													size={16}
+													onClick={() => this.props.addToFavourites(track)}
+												/>
+											)}
+										</p>
+									</span>
+								</p>
+							)
+						})}
+					</ul>
+				</div>
+			</>
+		)
 	}
 }
 
