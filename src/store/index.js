@@ -1,27 +1,30 @@
-// what the initial state of the application will be?
-
 import { createStore, combineReducers, applyMiddleware, compose } from "redux"
-import favReducer from "../reducers/favourites"
-import jobReducer from "../reducers/jobs"
+import favouritesReducer from "../reducers/favourites"
+import playlistReducer from "../reducers/playlist"
 import thunk from "redux-thunk"
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 
 export const initialState = {
-	favourites: [],
-	jobs: [],
+  favourites: {
+    songs: [],
+  },
+  currentPlaylist: {
+    songs: [],
+    currentSong: {},
+  },
 }
 
-const mainReducer = combineReducers({
-	favourites: favReducer,
-	jobs: jobReducer,
+const rootReducer = combineReducers({
+  favourites: favouritesReducer,
+  currentPlaylist: playlistReducer,
 })
 
 const configureStore = () =>
-	createStore(
-		mainReducer,
-		initialState,
-		composeEnhancers(applyMiddleware(thunk))
-	)
+  createStore(
+    rootReducer,
+    initialState,
+    composeEnhancers(applyMiddleware(thunk))
+  )
 
 export default configureStore
