@@ -1,72 +1,41 @@
-export const addToFavourites = (favourite) => {
-	return {
-		type: "ADD_TO_FAVOURITES",
-		payload: favourite,
-	}
-}
+export const addSongToFavourites = (song) => ({
+  type: "ADD_SONG_TO_FAVOURITES",
+  payload: song,
+})
 
-export const fetchAll = () => {
-	return async (dispatch, getState) => {
-		try {
-			dispatch({
-				type: "SET_LOADING",
-				payload: true,
-			})
-			let resp = await fetch("https://remotive.io/api/remote-jobs?search=")
-			console.log("state is", getState())
-			if (resp.ok) {
-				let jobs = await resp.json()
-				dispatch({
-					type: "GET_JOBS",
-					payload: jobs,
-				})
-				dispatch({
-					type: "SET_LOADING",
-					payload: false,
-				})
-				dispatch({
-					type: "SET_ERROR",
-					payload: false,
-				})
-			} else {
-				console.log("error")
-				dispatch({
-					type: "SET_LOADING",
-					payload: false,
-				})
-				dispatch({
-					type: "SET_ERROR",
-					payload: true,
-				})
-			}
-		} catch (error) {
-			console.log(error)
-			dispatch({
-				type: "SET_LOADING",
-				payload: false,
-			})
-			dispatch({
-				type: "SET_ERROR",
-				payload: true,
-			})
-		}
-	}
-}
-// export const addItemToCartAction = (book) => ({
-//   type: 'ADD_ITEM_TO_CART',
-//   payload: book,
-// })
+export const removeSongFromFavourites = (song) => ({
+  type: "REMOVE_SONG_FROM_FAVOURITES",
+  payload: song,
+})
 
-// export const removeItemFromCartAction = (index) => ({
-//   type: 'REMOVE_ITEM_FROM_CART',
-//   payload: index,
-// })
-
-// ({
-// })
-// is for returning an object out of your arrow function
-
-// export const setUsernameAction = (name) => ({
-//   type: 'SET_USERNAME',
-//   payload: name,
-// })
+// export const getPlaylistAction = (song) => {
+//   return async (dispatch) => {
+//     try {
+//       dispatch({
+//         type: "SET_LOADING",
+//         payload: true,
+//       })
+//       let response = await fetch(
+//         `https://remotive.io/api/remote-jobs?search=${query}`
+//       )
+//       if (response.ok) {
+//         let jobs = await response.json()
+//         //  this.setState({ jobs: jobs.jobs })
+//         dispatch({
+//           type: "GET_JOBS",
+//           payload: jobs.jobs,
+//         })
+//         dispatch({
+//           type: "SET_LOADING",
+//           payload: false,
+//         })
+//       }
+//     } catch (error) {
+//       console.log(error)
+//       dispatch({
+//         type: "SET_LOADING",
+//         payload: false,
+//       })
+//     }
+//   }
+// }
