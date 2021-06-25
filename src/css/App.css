@@ -34,6 +34,12 @@ body {
 	text-decoration: none;
 	color: white;
 }
+
+.fixLink {
+	text-decoration: none!important;
+	color: white!important;
+}
+
 .smallnavicon {
 	display: inline;
 	color: grey;
@@ -221,10 +227,10 @@ input[type="range"]::-webkit-slider-thumb {
 .jumbotron {
 	height: 200px;
 	background-image: linear-gradient(
-			to bottom,
-			rgba(255, 255, 255, 0),
-			rgb(0, 0, 0)
-		);
+		to bottom,
+		rgba(255, 255, 255, 0),
+		rgb(0, 0, 0)
+	);
 	background-size: 100%;
 	background-repeat: no-repeat;
 	background-position: bottom;
@@ -347,11 +353,11 @@ button.home-nav-btns:hover:after {
 	overflow: hidden;
 	text-overflow: ellipsis;
 }
-input[type="text"]{
+input[type="text"] {
 	color: white;
 	background: black;
 	margin: auto;
-	border: 1px solid black!important;
+	border: 1px solid black !important;
 	width: 90%;
 	margin: auto;
 }
@@ -360,6 +366,11 @@ input[type="text"]:focus,
 textarea:focus {
 	box-shadow: 0 0 5px rgb(252, 252, 252);
 	border: 1px solid rgb(255, 255, 255);
-		color: white;
+	color: white;
 	background: black;
+}
+.tracklist {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
 }
