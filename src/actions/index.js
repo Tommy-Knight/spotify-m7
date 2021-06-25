@@ -8,6 +8,22 @@ export const removeSongFromFavourites = (song) => ({
   payload: song,
 })
 
+export const getPlaylistAction = (song, album) => ({
+  type: "SET_PLAYLIST",
+  payload: {
+    currentSong: song,
+    songs: album,
+  },
+})
+
+export const nextSongAction = () => ({
+  type: "NEXT_SONG",
+})
+
+export const prevSongAction = () => ({
+  type: "PREV_SONG",
+})
+
 // export const getPlaylistAction = (song) => {
 //   return async (dispatch) => {
 //     try {

@@ -11,6 +11,7 @@ export const initialState = {
   },
   currentPlaylist: {
     songs: [],
+    currentSong: {},
   },
 }
 

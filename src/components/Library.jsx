@@ -1,7 +1,11 @@
 import React, { Component } from "react"
 import { Link } from "react-router-dom"
 import { connect } from "react-redux"
-import { addSongToFavourites, removeSongFromFavourites } from "../actions"
+import {
+  addSongToFavourites,
+  removeSongFromFavourites,
+  getPlaylistAction,
+} from "../actions"
 
 const mapStateToProps = (state) => ({
   ...state,
@@ -13,6 +17,9 @@ const mapDispatchToProps = (dispatch) => ({
   },
   removeFromFavourites: (song) => {
     dispatch(removeSongFromFavourites(song))
+  },
+  setPlaylist: (song, album) => {
+    dispatch(getPlaylistAction(song, album))
   },
 })
 
@@ -87,7 +94,11 @@ class Library extends Component {
                 <ul className="fa-ul">
                   {this.state.tracks.map((track) => {
                     return (
-                      <li onClick={() => this.props.addToFavourites(track)}>
+                      <li
+                        onClick={() =>
+                          this.props.setPlaylist(track, this.state.tracks)
+                        }
+                      >
                         {track.title}
                       </li>
                     )
