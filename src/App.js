@@ -17,7 +17,7 @@ function App() {
 							render={(routerProps) => (
 								<Home {...routerProps} title="home" />
 							)}
-							path="/home"
+							path="/artist/:id"
 							exact
 						/>
 						<Route

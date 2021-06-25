@@ -99,7 +99,7 @@ class Search extends Component {
 							this.state.songs.map((song) => (
 								<div>
 									<Col key={song.id} className="my-2">
-										<Link to={`/album/${song.id}`}>
+										<Link to={`/album/${song.album.id}`}>
 											<img
 												style={{ marginTop: "20px" }}
 												className="iconHover"
@@ -114,8 +114,9 @@ class Search extends Component {
 											</div>
 										</Link>
 									</Col>
+									<hr/>
 									<Col className="my-2">
-										<Link to={`/album/${song.id}`}>
+										<Link to={`/artist/${song.artist.id}`}>
 											<img
 												className="iconHover"
 												src={song.artist.picture}

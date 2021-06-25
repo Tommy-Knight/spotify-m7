@@ -1,12 +1,74 @@
 import React, { Component } from "react"
 
 export default class Library extends Component {
-	state = { id: this.props.match.params.id }
+	state = { 
+		loading: false,
+		id: this.props.match.params.id, 
+		album: {},
+		artist: {},
+		tracks:[]
+	}
 
- 
+	fetchAll = async () => {
+		try {
+			this.setState({ loading: true })
+			const resp = await fetch(
+				`https://striveschool-api.herokuapp.com/api/deezer/album/${this.props.match.params.id}`
+			)
+			const album = await resp.json()
+			this.setState({ loading: false })
+			this.setState({ album })
+			this.setState({artist:album.artist})
+			this.setState({tracks:album.tracks.data})
+			console.log(`fetch returns`, this.state.album, "tracks", this.state.tracks)
+		} catch (error) {
+			console.log(error)
+		}
+	}
+	componentDidMount = () => {
+		this.fetchAll()
+	}
+
 	render() {
 		return (
-<p>THIS IS THE album page now</p>
+			<div>
+				<div className="container-fluid m-0 p-0">
+					<div className="row mt-5">
+						<div className="col-lg-6 col-md-6 album-n">
+							<div className="container m-0 p-1">
+								<img
+									src={this.state.album.cover_medium}
+									id="img-album-n"
+									alt=""
+								/>
+								<h4>{this.state.album.title}</h4>
+								<p>{this.state.artist.name}</p>
+								<button className="btn btn-success btn-n">PLAY</button>
+								<p>{this.state.album.fans} Fans • {this.state.album.nb_tracks} SONGS</p>
+								<div>
+									<span className="fa-stack mb-2" id="toggle">
+										<i className="far fa-heart fa-stack-1x" />
+										<i className="fas fa-heart fa-stack-1x" />
+									</span>
+									<span>
+										<i className="fa fa-ellipsis-h mb-2" />
+									</span>
+								</div>
+							</div>
+						</div>
+						<div className="col-lg-5 col-md-5 tracklist-n">
+							<div className="track-container">
+								<ul className="fa-ul">
+									{this.state.tracks.map((track) => {
+										 return <li>{track.title}</li>
+									})}
+									
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
 		)
 	}
 }
