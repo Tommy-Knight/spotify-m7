@@ -16,7 +16,7 @@ export default class Navbar extends Component {
 								className="sidebar-logo"
 							/>
 						</a>
-						<Link to="/home" className="greenborder homeGreen">
+						<Link to="/artist/117" className="greenborder homeGreen">
 							<svg
 								className="mr-2 mb-2"
 								xmlns="http://www.w3.org/2000/svg"

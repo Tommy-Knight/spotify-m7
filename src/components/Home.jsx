@@ -1,37 +1,56 @@
 import React, { Component } from "react"
 
 export default class Home extends Component {
-  state = {}
+  state = {
+    loading: false,
+    id: this.props.match.params.id,
+    artist: {},
+    data: {},
+  }
 
-  componentDidMount = async () => {
+  fetchArtist = async () => {
     try {
-      let response = await fetch(
-        `http://www.omdbapi.com/?i=tt3896198&apikey=c65cdbe8&s=${this.props.search}`
+      this.setState({ loading: true })
+      const resp = await fetch(
+        `https://striveschool-api.herokuapp.com/api/deezer/artist/${this.props.match.params.id}`
       )
-
-      if (response.ok) {
-        let data = await response.json()
-        let last6 = data.Search.slice(-6)
-        this.setState({ gallery: last6 })
-        console.log(last6)
-      }
+      const artist = await resp.json()
+      this.setState({ loading: false })
+      this.setState({ artist })
+      console.log(`fetch returns artist`, this.state.artist)
     } catch (error) {
       console.log(error)
     }
   }
-
+  fetchAll = async () => {
+    try {
+      this.setState({ loading: true })
+      const resp = await fetch(
+        `https://striveschool-api.herokuapp.com/api/deezer/artist/${this.props.match.params.id}/top?limit=50`
+      )
+      const data = await resp.json()
+      this.setState({ loading: false })
+      this.setState({ data: data.data })
+      console.log(`fetch returns data`, this.state.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+  componentDidMount = () => {
+    this.fetchArtist()
+    this.fetchAll()
+  }
+  75798
   render() {
     return (
       <div style={{ marginBottom: "500px" }}>
         <div className="jumbotron jumbotron-fluid">
           <div className="container">
-            <div className="monthlyListen">33,000,575 MONTHLY LISTENERS</div>
-            <h1 className="display-4">The Beatles</h1>
-            <button
-              href="albumpage.html"
-              className="btn btn-success playBtn"
-              onmouseover="rick.play()"
-            >
+            <div className="monthlyListen">
+              {this.state.artist.nb_fan} MONTHLY LISTENERS
+            </div>
+            <h1 className="display-4">{this.state.artist.name}</h1>
+            <button href="albumpage.html" className="btn btn-success playBtn">
               Play
             </button>
             <button className="btn followBtn">Follow</button>
@@ -70,7 +89,7 @@ export default class Home extends Component {
           <div>
             <h2 style={{ marginBottom: 0 }}>#Albums</h2>
             <span id="collectionInfo" style={{ color: "grey" }}>
-              The best of The Beatles
+              The best of {this.state.artist.name}
             </span>
           </div>
           <div className="row mt-4 mb-1 no-gutters">
@@ -157,7 +176,7 @@ export default class Home extends Component {
           <div>
             <h2 style={{ marginBottom: 0 }}>#Singles</h2>
             <span id="collectionInfo" style={{ color: "grey" }}>
-              The Beatles's best tracks
+              {this.state.artist.name} best tracks
             </span>
           </div>
           <div className="row mt-4 mb-1 no-gutters">
