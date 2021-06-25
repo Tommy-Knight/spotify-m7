@@ -17,7 +17,8 @@ export const initialState = {
         name: "",
       },
     },
-    cover: "",
+    cover:
+      "https://developer.spotify.com/assets/branding-guidelines/icon4@2x.png",
   },
 }
 
